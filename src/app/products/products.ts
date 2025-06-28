@@ -18,7 +18,7 @@ export class Products implements OnInit {
     this.getProducts()
   }
   getProducts(): void {
-    this.Product.getAllProducts()
+    this.products= this.Product.getAllProducts()
   }
   deleteProduct(product: any):  void{
     let Confirmed = confirm("Are you sure you want to delete this product?");
