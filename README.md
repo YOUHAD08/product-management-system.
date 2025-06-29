@@ -114,6 +114,8 @@ Product-REST-API/
 
 ### Main Features:
 
+**Backend (Spring Boot REST API)**: [View Backend Repository](https://github.com/YOUHAD08/product-management-system--backend.git)
+
 - RESTful API using @RestController 
 - JPA Entity Product with fields:
      - id, name, price, quantity, selected 
