@@ -1,59 +1,209 @@
-# ProductManagement
+# 🛒 Product Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+A full-stack web application for managing products, built using **Spring Boot** for the backend and **Angular** for the frontend. It allows users to view, delete, and inspect products, with data stored in an in-memory **H2 database**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📸 Screenshots
 
-```bash
+**Home Page**
+
+![Home Page](img/home-page.png)
+
+**Product Page**
+
+![Product  Page](img/product-page.png)
+
+**H2 DataBase**
+
+![H2 DataBase](img/h2-database1.png)
+![H2 DataBase](img/h2-database2.png)
+
+---
+
+## 📸 Tech Stack
+
+| Layer    | Technology                     |
+| -------- | ------------------------------ |
+| Frontend | Angular 17                     |
+| Backend  | Spring Boot 3                  |
+| Database | H2 (In-memory)                 |
+| Language | Java 17, TypeScript            |
+| Tools    | Maven, Angular CLI, H2 Console |
+
+---
+
+## 📂 Project Structure
+
+**Front End (Angular)**
+```
+product-management/
+├── img/
+├── node_modules/
+├── public/
+├── src/
+│   └── app/
+│       ├── home/
+│       │   ├── home.css
+│       │   ├── home.html
+│       │   ├── home.spec.ts
+│       │   └── home.ts
+│       ├── products/
+│       │   ├── products.css
+│       │   ├── products.html
+│       │   ├── products.spec.ts
+│       │   └── products.ts
+│       ├── services/
+│       │   ├── product.spec.ts
+│       │   └── product.ts
+│       ├── app.config.ts
+│       ├── app.css
+│       ├── app.html
+│       ├── app.routes.ts
+│       ├── app.spec.ts
+│       └── app.ts
+├── index.html
+├── main.ts
+├── styles.css
+├── .editorconfig
+├── .gitignore
+├── angular.json
+├── note.txt
+├── package.json
+├── package-lock.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+└── tsconfig.spec.json
+
+```
+**Back End (Spring Boot)**
+
+```
+Product-REST-API/
+├── src/
+│   └── main/
+│       └── java/
+│           └── ma/
+│               └── youhad/
+│                   └── productrestapi/
+│                       ├── ProductRestApiApplication.java
+│                       ├── entities/
+│                       │   └── Product.java
+│                       ├── repository/
+│                       │   └── ProductRepository.java
+│                       └── web/
+│                           └── ProductRestAPI.java
+│
+├── src/
+│   └── main/
+│       └── resources/
+│           ├── application.properties
+│           └── static/
+│
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── README.md
+
+```
+
+---
+
+## 📸 Backend - Spring Boot
+
+### Main Features:
+
+- RESTful API using @RestController 
+- JPA Entity Product with fields:
+     - id, name, price, quantity, selected 
+- ProductRepository for database operations 
+- Auto-populated sample data on startup
+
+| Method | Endpoint         | Description          |
+| ------ | ---------------- | -------------------- |
+| GET    | `/products`      | Get all products     |
+| GET    | `/products/{id}` | Get product by ID    |
+| DELETE | `/products/{id}` | Delete product by ID |
+
+
+### Example JSON Response:
+
+![JSON File](img/json.png)
+
+### H2 Console:
+
+- Access via http://localhost:8080/h2-console
+- Use JDBC URL: jdbc:h2:mem:products-db
+
+---
+
+### 💻 Frontend - Angular
+
+## Main Features:
+
+- Fetch product list from REST API 
+- Display product details 
+- Delete products 
+- Angular service to handle HTTP calls 
+- Responsive UI
+
+Runs on http://localhost:4200
+
+---
+
+## ⚙️ Getting Started
+
+### Backend
+
+```
+cd Product-REST-API
+./mvnw spring-boot:run
+```
+### Frontend
+
+```
+cd product-management
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then go to: http://localhost:4200
 
-## Code scaffolding
+### 🔐 H2 Database Access
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Access URL: http://localhost:8080/h2-console
 
-```bash
-ng generate component component-name
+---
+
+## 🌍 Cross-Origin Configuration
+
+CORS enabled in Spring Boot:
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+@CrossOrigin("http://localhost:4200")
 ```
+---
+## 🧠 Key Concepts & What I Learned
 
-## Building
+- RESTful backend development using Spring Boot 
+- Angular client development with service architecture 
+- Connecting Angular to Java backend via HTTP 
+- Initializing in-memory data with CommandLineRunner 
+- Working with @Entity, @RestController, @CrossOrigin, and more 
+- Using Angular HttpClient for REST API calls
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+##  📜 License
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+This project is licensed under the MIT License.
 
-## Running unit tests
+## 📁 Resources
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+| Item          | Path or Link                       |
+| ------------- | ---------------------------------- |
+| Frontend Code | `/product-management/`             |
+| Backend Code  | `/Product-REST-API/`               |
+| H2 Console    | `http://localhost:8080/h2-console` |
+| API Base URL  | `http://localhost:8080/products`   |
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
